@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=1000" name="viewport">
+    <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
+    <title>Step 3</title>
+    <link rel="stylesheet" href="css/main.css" type="text/css">
+  </head>
+
+  <body>
+    <header id="top" class="top">
+      <div class="branding">Site Name</div>
+    </header>
+    <div class="container">
+      <div class="main">
+        <div class="content">
+          <h3 class="content__title">Bukti Pengiriman</h3>
+          <form class="form">
+            <div class="form__row">
+              <p>Silakan upload foto resi pengiriman Anda, kami akan menukarnya dengan voucher belanja senilai biaya kirim balik.</p>
+            </div>
+            <div class="form__row">
+              <label for="field1" class="form__label">Biaya Kirim Balik</label>
+              <input id="field1" type="number" placeholder="Rp. 50,000" step="1000" class="form__field">
+            </div>
+            <div class="form__row">
+              <div class="returform alt">
+                <label for="uploadFile1" class="form__label">Foto Resi Pengiriman</label>
+                <div class="returform__file">
+                  <a href="#" class="returform__upload">Tap untuk upload foto</a>
+                  <input id="uploadFile1" type="file" name="">
+                </div>
+              </div>
+            </div>
+            <div class="form__row">
+              <label for="desc" class="form__label">Keterangan</label>
+              <textarea id="desc" cols="30" rows="4" placeholder="Tambahkan keterangan tambahan jika ada" class="form__field"></textarea>
+            </div>
+            <p class="form__row">
+              <a href="step4.html" class="btn btn--block">Lanjutkan</a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- JS Assets-->
+    <script src="js/jquery.js"></script>
+    <script>
+      $('.returform__file input').change(function()
+      {
+        var el = $(this);
+        var file = this.files[0];
+        var reader = new FileReader();
+
+        if (file && file.type.match('image.*'))
+        {
+          reader.readAsDataURL(file);
+        }
+
+        reader.onloadend = function(e)
+        {
+
+          if (el.parent().children().length > 2)
+          {
+            el.siblings('.upload-previewer').remove();
+          }
+
+          el.parent().append(
+            '<div class="upload-previewer">' +
+            '<img alt="" src="' + reader.result + '" />' +
+            '<a class="upload-previewer__close" href="#">&times;</a>'
+          );
+          el.siblings('.returform__upload').css('display', 'none');
+        }
+      });
+
+      $('.returform').on('click', '.upload-previewer__close', function(e)
+      {
+        e.preventDefault();
+        $(this).parent().siblings('.returform__upload').css('display', 'block');
+        $(this).parent().remove();
+      });
+    </script>
+  </body>
+
+</html>
