@@ -1,0 +1,23 @@
+extends ./_base
+
+block title
+  | Step 3
+
+block content
+  .main
+
+    .content
+      h3.content__title Kode Voucher Anda
+      p Laporan retur produk Anda sudah selesai, ini voucher belanja Anda:
+      .voucher
+        .voucher__title Voucher Belanja
+        dl
+          dt For:
+          dd Mrs. Jane Doe
+          dt Amount:
+          dd Rp. 120.000
+        .voucher__code
+          .small code:
+          | ABCDE12345
+        .voucher__note Voucher ini bisa digunakan setelah kami menerima retur barang Anda <br> Tunggu aktivasi voucher lewat SMS/email dari kami.
+      p Terima kasih telah melaporkan pengembalian barang Anda, jika ada pertanyaan tambahan silakan hubungi cs@domain.com

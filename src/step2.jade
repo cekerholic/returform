@@ -1,0 +1,145 @@
+extends ./_base
+
+block title
+  | Step 2
+
+block content
+  .main
+
+    .content
+      h3.content__title Histori Order Anda
+      form.form
+        .form__row
+          h4 Silakan pilih produk yang ingin Anda retur
+          p Produk yang Anda kirim balik akan kami redeem dengan voucher belanja senilai harga produk
+
+        .listorder
+          .listorder__item
+            .listorder__data.clearfix
+              .listorder__select
+                label.listorder__label(for="check1")
+                  input.listorder__checkbox#check1(type="checkbox", name="")
+                  span &check;
+              .listorder__figure
+                img.listorder__img(src="https://salestock-public-prod.global.ssl.fastly.net/product_images/b33a1448b73209906521e4b945f2b84e_600.jpg", alt="")
+              .listorder__details
+                p.listorder__name Treanisa Flowery Casual Legging
+                p.listorder__meta
+                  strong 79.000
+                  span.product-size M
+            .listorder__returthis
+              .returform.clearfix
+                .returform__item
+                  label.form__label(for="returReason") Alasan Retur
+                  select.form__field#returReason(name="")
+                    option &mdash; Silakan Pilih &mdash;
+                    option Bolong
+                    option Jahitan tidak rapi
+                    option Kebesaran
+                    option Kekecilan
+                .returform__item
+                  label.form__label(for="uploadFile1") Bukti Foto
+                  .returform__file
+                    a.returform__upload(href="#") Tap untuk upload foto
+                    input#uploadFile1(type="file", name="")
+
+          .listorder__item
+            .listorder__data.clearfix
+              .listorder__select
+                label.listorder__label(for="check1")
+                  input.listorder__checkbox#check1(type="checkbox", name="")
+                  span &check;
+              .listorder__figure
+                img.listorder__img(src="https://salestock-public-prod.global.ssl.fastly.net/product_images/bef1fa18aac9607c393d7c047310f889.jpg", alt="")
+              .listorder__details
+                p.listorder__name Xedsu Color Block Tunic Shirt
+                p.listorder__meta
+                  strong 85.000
+                  span.product-size S
+            .listorder__returthis
+              .returform.clearfix
+                .returform__item
+                  label.form__label(for="returReason") Alasan Retur
+                  select.form__field#returReason(name="")
+                    option &mdash; Silakan Pilih &mdash;
+                    option Bolong
+                    option Jahitan tidak rapi
+                    option Kebesaran
+                    option Kekecilan
+                .returform__item
+                  label.form__label(for="uploadFile2") Bukti Foto
+                  .returform__file
+                    a.returform__upload(href="#") Tap untuk upload foto
+                    input#uploadFile2(type="file", name="")
+
+          .listorder__item
+            .listorder__data.clearfix
+              .listorder__select
+                label.listorder__label(for="check1")
+                  input.listorder__checkbox#check1(type="checkbox", name="")
+                  span &check;
+              .listorder__figure
+                img.listorder__img(src="https://salestock-public-prod.global.ssl.fastly.net/product_images/29708c7a1bc76158d8c7321971c06632_600.jpg", alt="")
+              .listorder__details
+                p.listorder__name Jihania Square Longsleeve Shirt
+                p.listorder__meta
+                  strong 95.000
+                  span.product-size L
+            .listorder__returthis
+              .returform.clearfix
+                .returform__item
+                  label.form__label(for="returReason") Alasan Retur
+                  select.form__field#returReason(name="")
+                    option &mdash; Silakan Pilih &mdash;
+                    option Bolong
+                    option Jahitan tidak rapi
+                    option Kebesaran
+                    option Kekecilan
+                .returform__item
+                  label.form__label(for="uploadFile3") Bukti Foto
+                  .returform__file
+                    a.returform__upload(href="#") Tap untuk upload foto
+                    input#uploadFile3(type="file", name="")
+
+
+        p.form__row
+          a.btn.btn--block(href="step3.html") Lanjutkan
+
+
+block scripts
+  script.
+    $('.listorder__item').each(function() {
+      $(this).find('.listorder__checkbox').change(function() {
+        $(this).parents('.listorder__item').find('.listorder__returthis').slideToggle(100);
+      });
+    });
+
+    $('.returform__file input').change(function() {
+      var el = $(this);
+      var file = this.files[0];
+      var reader = new FileReader();
+
+      if( file && file.type.match('image.*') ) {
+        reader.readAsDataURL(file);
+      }
+
+      reader.onloadend = function(e) {
+
+        if( el.parent().children().length > 2 ) {
+          el.siblings('.upload-previewer').remove();
+        }
+
+        el.parent().append(
+          '<div class="upload-previewer">'+
+          '<img alt="" src="'+reader.result+'" />'+
+          '<a class="upload-previewer__close" href="#">&times;</a>'
+        );
+        el.siblings('.returform__upload').css('display', 'none');
+      }
+    });
+
+    $('.returform').on('click', '.upload-previewer__close', function(e) {
+      e.preventDefault();
+      $(this).parent().siblings('.returform__upload').css('display', 'block');
+      $(this).parent().remove();
+    });

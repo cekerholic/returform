@@ -1,0 +1,63 @@
+extends ./_base
+
+block title
+  | Step 3
+
+block content
+  .main
+
+    .content
+      h3.content__title Bukti Pengiriman
+      form.form
+        .form__row
+          p Silakan upload foto resi pengiriman Anda, kami akan menukarnya dengan voucher belanja senilai biaya kirim balik.
+        .form__row
+            label.form__label(for="field1") Biaya Kirim Balik
+            input.form__field#field1(type="number" placeholder="Rp. 50,000" step="1000")
+        .form__row
+          .returform.alt
+            label.form__label(for="uploadFile1") Foto Resi Pengiriman
+            .returform__file
+              a.returform__upload(href="#") Tap untuk upload foto
+              input#uploadFile1(type="file", name="")
+
+        .form__row
+          label.form__label(for="desc") Keterangan
+          textarea#desc.form__field(cols="30", rows="4" placeholder="Tambahkan keterangan tambahan jika ada")
+
+        p.form__row
+          a.btn.btn--block(href="step4.html") Lanjutkan
+
+
+block scripts
+  script.
+
+    $('.returform__file input').change(function() {
+      var el = $(this);
+      var file = this.files[0];
+      var reader = new FileReader();
+
+      if( file && file.type.match('image.*') ) {
+        reader.readAsDataURL(file);
+      }
+
+      reader.onloadend = function(e) {
+
+        if( el.parent().children().length > 2 ) {
+          el.siblings('.upload-previewer').remove();
+        }
+
+        el.parent().append(
+          '<div class="upload-previewer">'+
+          '<img alt="" src="'+reader.result+'" />'+
+          '<a class="upload-previewer__close" href="#">&times;</a>'
+        );
+        el.siblings('.returform__upload').css('display', 'none');
+      }
+    });
+
+    $('.returform').on('click', '.upload-previewer__close', function(e) {
+      e.preventDefault();
+      $(this).parent().siblings('.returform__upload').css('display', 'block');
+      $(this).parent().remove();
+    });

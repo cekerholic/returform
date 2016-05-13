@@ -1,0 +1,289 @@
+@import "vendors/normalize";
+@import "vendors/scut";
+
+@import "base/colours";
+@import "base/typography";
+@import "base/scaffoldings";
+
+@import "components/layouts";
+
+// text content
+.content {
+
+  &__title {
+    padding-top: 0;
+  }
+}
+
+.headsup {
+  background-color: $red-50;
+  border: 1px solid $red-100;
+  color: $red-800;
+  font-weight: bold;
+  margin-bottom: 1.6rem;
+  padding: .8rem 1.6rem;
+}
+
+.btn {
+  background-color: $red-500;
+  border: 1px solid $red-600;
+  color: $w;
+  transition: all ease-in-out .15s;
+  display: inline-block;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  white-space: nowrap;
+  padding: .8rem 1.6rem;
+  border-radius: .4rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  text-transform: uppercase;
+
+  &:hover,
+  &:active {
+    background-color: $red-600;
+  }
+
+  &:active,
+  &.active {
+    outline: 0;
+    background-image: none;
+    box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+  }
+
+  &--block {
+    display: block;
+  }
+}
+
+.form {
+  border-top: 1px solid $blue-grey-50;
+  margin: 0 -1.6rem;
+  padding-top: 1.6rem;
+
+  &__row {
+    padding: 0 1.6rem;
+    margin-bottom: 1.6rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: .4rem;
+  }
+
+  &__field {
+    background-color: $w;
+    background-image: none;
+    border: 1px solid $blue-grey-100;
+    border-radius: .4rem;
+    display: block;
+    width: 100%;
+    padding: .8rem 1.6rem;
+    font-size: 1.4rem;
+    line-height: (2.4/1.4);
+    vertical-align: middle;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+
+    &:focus {
+      border-color: rgba($red-500, .6);
+      outline: 0;
+      box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    }
+  }
+
+  textarea {
+    resize: vertical;
+  }
+}
+
+
+.listorder {
+  border-bottom: 1px solid $blue-grey-50;
+  width: 100%;
+  margin-bottom: 1.6rem;
+
+  &__item {
+    border-top: 1px solid $blue-grey-50;
+  }
+
+  &__data {
+    position: relative;
+    padding: 1.6rem;
+  }
+
+  &__select {
+    float: left;
+    width: 2rem;
+    margin-right: 1.6rem;
+  }
+
+  &__label {
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid $blue-grey-100;
+    border-radius: .2rem;
+
+    span {
+      display: none;
+      font-size: 3.2rem;
+      position: relative;
+      top: .8rem;
+      color: $green-500;
+      line-height: 0;
+    }
+  }
+
+  &__checkbox {
+    @include scut-absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+
+    &:checked ~ span {
+      display: block;
+    }
+  }
+
+  &__figure {
+    float: left;
+    margin-right: 1.6rem;
+  }
+
+  &__img {
+    width: 8rem;
+    display: block;
+  }
+
+  &__name {
+    @include scut-truncate;
+  }
+
+  &__returthis {
+    display: none;
+  }
+}
+
+.returform {
+  background-color: $grey-100;
+  padding: 1.6rem 0;
+
+  &.alt {
+    background-color: transparent;
+  }
+
+  &__item {
+    float: left;
+    width: 50%;
+    padding: 0 1.6rem;
+  }
+
+  &__file {
+    position: relative;
+
+    input {
+      @include scut-absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 100%;
+      padding-bottom: 50%;
+    }
+  }
+
+  &__upload {
+    display: block;
+    width: 100%;
+    height: 0;
+    padding-top: 25%;
+    padding-bottom: 25%;
+    color: $w;
+    background-color: $blue-grey-100;
+    text-align: center;
+    line-height: 0;
+    font-weight: bold;
+  }
+}
+
+.upload-previewer {
+  position: relative;
+
+  a {
+    @include scut-absolute(.8rem .8rem n n);
+    cursor: pointer;
+    line-height: 1;
+    font-weight: bold;
+    font-size: 1.8rem;
+    color: $red-500;
+  }
+}
+
+.product-size {
+  margin-left: .8rem;
+  display: inline-block;
+  line-height: 1.4rem;
+  background-color: $grey-50;
+  border: 1px solid $blue-grey-50;
+  width: 1.6rem;
+  height: 1.6rem;
+  text-align: center;
+  font-weight: bold;
+  font-size: 75%;
+  position: relative;
+  top: -.2rem;
+}
+
+.voucher {
+  background-color: rgba($red-50, .3);
+  box-shadow: 0 2px 5px 0 rgba($b, .16), 0 2px 10px 0 rgba($b, .12);
+  border-radius: .8rem;
+  margin: 1.6rem 0 3.2rem;
+  padding: 1.6rem;
+  color: $red-800;
+
+  &__title {
+    text-align: center;
+    padding: .8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 1px dashed $red-300;
+    font-size: 1.8rem;
+    margin: -1.6rem -1.6rem 1.6rem;
+  }
+
+  dt {
+    float: left;
+    width: 8rem;
+  }
+
+  dd {
+    font-weight: bold;
+  }
+
+  &__code {
+    text-align: right;
+    font-size: 2.4rem;
+    line-height: 1.25;
+
+    .small {
+      font-size: 1.2rem;
+    }
+  }
+
+  &__note {
+    background-color: $red-50;
+    font-size: 1.2rem;
+    margin: 1.6rem -1.6rem -1.6rem;
+    padding: .8rem;
+  }
+}

@@ -1,0 +1,23 @@
+doctype html
+html(lang="en-US")
+  head
+    meta(charset="utf-8")
+    meta(content="IE=edge" http-equiv="X-UA-Compatible")
+    meta(content="width=1000" name="viewport")
+    meta(content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport")
+    title
+      block title
+        | Home
+
+    link(rel="stylesheet" href="css/main.css" type="text/css")
+    block style
+
+  body
+    include partial/_header
+    .container
+      block content
+
+    // JS Assets
+    script(src="js/jquery.js")
+    block scripts
+  //- body
